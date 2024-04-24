@@ -1,17 +1,59 @@
-# Validate a minesweeper interior block
-# block_data is a two dimensional array containing the data from a 3 x 3 grid of squares
-# We are assuming that we are only checking interior blocks for now
-# Return value should be a string that says either Valid or Invalid (with some hints as to why it's invlaid)
 def validate( block_data ):
-  # Check whether the centre block is a bomb, a number, or an invalid input
-  # Skip bombs, send an error on invalid input, verify numbers
+  bombcount = 0
+  result = ""
+  if block_data [1][1] == -1:
+    result = "I'm a BOMB!"
+    
+  if block_data [0][0] == -1:
+      bombcount = bombcount + 1
+  elif: block_data [0][1] == -1:
+    bombcount = bombcount + 1
+  elif block_data [0][2] == -1:
+    bombcount = bombcount + 1
+  elif block_data [1][0] == -1:
+    bombcount = bombcount + 1
+  elif block_data [1][2] == -1:
+    bombcount = bombcount + 1
+  elif block_data [2][0] == -1:
+    bombcount = bombcount + 1
+  elif block_data [2][1] == -1:
+    bombcount = bombcount + 1
+  elif block_data [2][2] == -1:
+    bombcount = bombcount + 1
 
-  return
+    if block_data[1][1] == bombcount: 
+      result = "Valid Bomb" 
+
+      if block_data[0][0] == -1 and block_data[0][1] == 1 and block_data[0][2] == 0 and block_data[1][0] == 1 and block_data[1][1] ==1 and block_data[1][2] ==0 and block_data[2][0] ==0 and block_data[2][1] ==0 and block_data[2][2] ==0:
+        result = result + " and board is valid"
+      elif block_data[0][1] == -1 and block_data[0][0] == 1 and block_data[0][2] == 1 and block_data[1][0] == 1 and block_data[1][1] ==1 and block_data[1][2] ==1 and block_data[2][0] ==0 and block_data[2][1] ==0 and block_data[2][2] ==0:
+          result = result + " and board is valid"
+      elif block_data[0][2] == -1 and block_data[0][1] == 1 and block_data[0][0] == 0 and block_data[1][0] == 0 and block_data[1][1] ==1 and block_data[1][2] ==1 and block_data[2][0] ==0 and block_data[2][1] ==0 and block_data[2][2] ==0:
+          result = result + " and board is valid"
+      elif block_data[1][0] == -1 and block_data[0][0] == 1 and block_data[0][1] == 1 and block_data[0][2] == 0 and block_data[1][1] ==1 and block_data[1][2] ==0 and block_data[2][0] ==1 and block_data[2][1] ==1 and block_data[2][2] ==0:
+          result = result + " and board is valid"
+      elif block_data[1][1] == -1 and block_data[0][0] == 1 and block_data[0][1] == 1 and block_data[0][2] == 1 and block_data[1][0] ==1 and block_data[1][2] ==1 and block_data[2][0] ==1 and block_data[2][1] ==1 and block_data[2][2] ==1:
+          result = result + " and board is valid"
+      elif block_data[1][2] == -1 and block_data[0][0] == 0 and block_data[0][1] == 1 and block_data[0][2] == 1 and block_data[1][0] ==0 and block_data[1][1] ==1 and block_data[2][0] ==0 and block_data[2][1] ==1 and block_data[2][2] ==1:
+          result = result + " and board is valid"
+      elif block_data[2][0] == -1 and block_data[0][0] == 0 and block_data[0][1] == 0 and block_data[0][2] == 0 and block_data[1][0] ==1 and block_data[1][1] ==1 and block_data[1][2] ==0 and block_data[2][1] ==1 and block_data[2][2] ==0:
+          result = result + " and board is valid"
+      elif block_data[2][1] == -1 and block_data[0][0] == 0 and block_data[0][1] == 0 and block_data[0][2] == 0 and block_data[1][0] ==1 and block_data[1][1] ==1 and block_data[1][2] ==1 and block_data[2][0] ==1 and block_data[2][2] ==1:
+          result = result + " and board is valid"
+      elif block_data[2][2] == -1 and block_data[0][0] == 0 and block_data[0][1] == 0 and block_data[0][2] == 0 and block_data[1][0] ==0 and block_data[1][1] ==1 and block_data[1][2] ==1 and block_data[2][0] ==0 and block_data[2][1] ==1:
+          result = result + " and board is valid"        
+      else:
+        result = "Invalid Board"
+
+    return result
 
 
 grid = [
-  [-1,1,0],
-  [1,1,0],
+  [1,-1,1],
+  [1,1,1],
   [0,0,0]
 ]
 print (validate(grid))
+
+
+
